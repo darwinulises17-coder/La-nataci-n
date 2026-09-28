@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Museo virtual interactivo de la natación: historia, estilos, disciplinas, técnica, competencia y seguridad.">
+<title>Museo Virtual de la Natación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><span class="light light-a"></span><span class="light light-b"></span><span class="water-line wl-a"></span><span class="water-line wl-b"></span></div>
+
+<div class="loader" id="loader"><div class="loader-mark">M</div><div class="loader-title">MUSEO <strong>DE LA NATACIÓN</strong></div><div class="loader-line"><span></span></div></div>
+
+<section id="cover" class="cover">
+  <div class="cover-image"></div><div class="cover-overlay"></div><div class="cover-grid"></div>
+  <div class="cover-content">
+    <div class="eyebrow"><span></span>MUSEO VIRTUAL · EXPOSICIÓN INTERACTIVA</div>
+    <div class="edition">HISTORIA · TÉCNICA · DISCIPLINAS · COMPETENCIA</div>
+    <h1>TODO<br><em>SOBRE LA NATACIÓN</em></h1>
+    <p>Un recorrido visual por el deporte acuático: desde sus orígenes hasta los estilos, las disciplinas, la técnica, la competencia y la seguridad en el agua.</p>
+    <button id="startBtn" class="hero-btn hero-start"><span class="btn-small">ENTRADA PRINCIPAL</span><strong>INICIAR RECORRIDO</strong><b>→</b></button>
+    <div class="cover-bottom"><span>08 ESTACIONES</span><i></i><span>EXPLORA · APRENDE · DESCUBRE</span></div>
+  </div>
+  <div class="cover-badge"><strong>01</strong><span>EL AGUA<br>COMO<br>DEPORTE</span></div>
+  <div class="scroll-cue">DESLIZA PARA DESCUBRIR <span>↓</span></div>
+</section>
+
+<header id="topbar" class="topbar hidden">
+  <button class="brand" data-section="map">MUSEO <strong>DE LA NATACIÓN</strong></button>
+  <nav aria-label="Navegación principal">
+    <button data-section="map">INICIO</button><button data-section="history">HISTORIA</button><button data-section="styles">ESTILOS</button><button data-section="disciplines">DISCIPLINAS</button><button data-section="competition">COMPETENCIA</button><button data-section="technique">TÉCNICA</button><button data-section="quiz">QUIZ</button>
+  </nav>
+  <button id="soundBtn" class="sound-btn" aria-label="Activar o desactivar sonido">SONIDO <span>OFF</span></button>
+</header>
+
+<main id="app" class="hidden">
+<section id="map" class="page active-page">
+  <div class="section-head"><span class="kicker">RECORRIDO / 00</span><h2>EXPLORA LA NATACIÓN</h2><p>Ocho estaciones para conocer la natación desde diferentes ángulos. Puedes seguir el orden o entrar directamente a la sección que quieras descubrir.</p></div>
+  <div class="progress-card"><div><span>PROGRESO DEL RECORRIDO</span><strong id="progressText">0/8</strong></div><div class="progress-track"><span id="progressBar"></span></div></div>
+  <div id="stations" class="route"></div>
+  <div class="section-photo-row map-photo-row">
+    <figure><img src="img/historia.png" alt="Historia de la natación" loading="lazy"><figcaption>HISTORIA</figcaption></figure>
+    <figure><img src="img/aguas-abiertas.png" alt="Natación y agua" loading="lazy"><figcaption>DISCIPLINAS</figcaption></figure>
+    <figure><img src="img/llegada.png" alt="Competencia de natación" loading="lazy"><figcaption>COMPETENCIA</figcaption></figure>
+  </div>
+  <div class="map-footer"><p>La natación reúne <strong>historia, técnica, resistencia, precisión y expresión.</strong></p><button id="restartBtn" class="outline-btn">REINICIAR RECORRIDO</button></div>
+</section>
+
+<section id="history" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 01</span><h2>HISTORIA DE LA NATACIÓN</h2><p>De una habilidad relacionada con la supervivencia y el desplazamiento a un deporte internacional con múltiples disciplinas.</p></div>
+  <div class="history-hero"><img src="img/historia.png" alt="Historia de la natación"><div class="image-overlay"></div><div class="history-caption"><span>DEL PASADO AL PRESENTE</span><strong>UNA HISTORIA EN MOVIMIENTO</strong></div></div>
+  <div id="timeline" class="timeline"></div>
+  <div class="section-photo-row">
+    <figure><img src="img/historia.png" alt="Nadador en el agua" loading="lazy"><figcaption>ORÍGENES Y EVOLUCIÓN</figcaption></figure>
+    <figure><img src="img/aguas-abiertas.png" alt="Natación en el agua" loading="lazy"><figcaption>DEL ENTORNO NATURAL A LA PISCINA</figcaption></figure>
+    <figure><img src="img/llegada.png" alt="Competencia moderna de natación" loading="lazy"><figcaption>LA NATACIÓN COMO DEPORTE</figcaption></figure>
+  </div>
+  <div class="fact-panel"><div><span class="kicker">DATO CURIOSO</span><p id="historyFact"></p></div><button id="newFact" class="outline-btn">NUEVO DATO</button></div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="styles" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 02</span><h2>LOS CUATRO ESTILOS</h2><p>Cada estilo utiliza una coordinación distinta de brazos, piernas, respiración y posición corporal.</p></div>
+  <div id="styleTabs" class="style-tabs"></div><article id="styleDetail" class="style-detail"></article>
+  <div class="compare"><span class="kicker">COMPARACIÓN</span><h3>CUATRO TÉCNICAS, CUATRO IDENTIDADES</h3><div id="compareGrid" class="compare-grid"></div></div>
+  <div class="image-gallery-block">
+    <div class="gallery-heading"><span class="kicker">GALERÍA / 02</span><h3>CUATRO ESTILOS EN IMÁGENES</h3><p>Observa las diferencias visuales entre las principales técnicas de natación.</p></div>
+    <div class="image-gallery">
+      <figure class="gallery-card"><img src="img/libre.png" alt="Estilo libre" loading="lazy"><figcaption><span>01</span><strong>LIBRE</strong><small>Velocidad y coordinación</small></figcaption></figure>
+      <figure class="gallery-card"><img src="img/pecho.png" alt="Estilo pecho" loading="lazy"><figcaption><span>02</span><strong>PECHO</strong><small>Simetría y deslizamiento</small></figcaption></figure>
+      <figure class="gallery-card"><img src="img/espalda.png" alt="Estilo espalda" loading="lazy"><figcaption><span>03</span><strong>ESPALDA</strong><small>Control y ritmo</small></figcaption></figure>
+      <figure class="gallery-card"><img src="img/mariposa.png" alt="Estilo mariposa" loading="lazy"><figcaption><span>04</span><strong>MARIPOSA</strong><small>Potencia y ondulación</small></figcaption></figure>
+    </div>
+  </div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="disciplines" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 03</span><h2>MÁS ALLÁ DE LA PISCINA</h2><p>La natación forma parte de un conjunto de disciplinas acuáticas que combinan capacidades diferentes.</p></div>
+  <div class="discipline-grid">
+    <article class="discipline-card featured"><img src="img/aguas-abiertas.png" alt="Natación en aguas abiertas"><div><span class="kicker">01 · RESISTENCIA</span><h3>AGUAS ABIERTAS</h3><p>Se practica en mares, lagos y otros espacios naturales. La orientación, la adaptación al entorno y la resistencia adquieren gran importancia.</p><div class="tags"><span>MAR</span><span>LAGO</span><span>RÍO</span></div></div></article>
+    <article class="discipline-card"><img src="img/natacion-artistica.png" alt="Natación artística"><div><span class="kicker">02 · EXPRESIÓN</span><h3>NATACIÓN ARTÍSTICA</h3><p>Combina natación, música, coreografía, figuras, acrobacia, coordinación y expresión corporal.</p><div class="tags"><span>MÚSICA</span><span>RITMO</span><span>FIGURAS</span></div></div></article>
+    <article class="discipline-card"><img src="img/clavados.png" alt="Clavados"><div><span class="kicker">03 · PRECISIÓN</span><h3>CLAVADOS</h3><p>El deportista ejecuta saltos desde trampolines o plataformas, incorporando posiciones, giros y volteretas antes de entrar al agua.</p><div class="tags"><span>ALTURA</span><span>GIROS</span><span>CONTROL</span></div></div></article>
+    <article class="discipline-card image-ready"><img src="img/waterpolo.png" alt="Waterpolo" loading="lazy"><div class="discipline-number">04</div><div><span class="kicker">04 · EQUIPO</span><h3>WATERPOLO</h3><p>Deporte colectivo acuático en el que dos equipos buscan marcar goles mientras se desplazan, pasan y defienden dentro del agua.</p><div class="tags"><span>ESTRATEGIA</span><span>EQUIPO</span><span>RESISTENCIA</span></div></div></article>
+    <article class="discipline-card image-ready paralympic-card"><img src="img/paranatacion.png" alt="Natación paralímpica" loading="lazy"><div class="discipline-number">05</div><div><span class="kicker">05 · INCLUSIÓN</span><h3>NATACIÓN PARALÍMPICA</h3><p>La natación competitiva también forma parte del deporte paralímpico, con clasificación deportiva para organizar las pruebas de acuerdo con las características funcionales de los participantes.</p><div class="tags"><span>INCLUSIÓN</span><span>COMPETENCIA</span></div></div></article>
+  </div>
+  <div class="paralympic-video">
+    <div class="video-copy"><span class="kicker">ARCHIVO AUDIOVISUAL / 05</span><h3>UNA COMPETENCIA DE NATACIÓN PARALÍMPICA</h3><p>Observa la salida, el ritmo de carrera y la llegada en un contexto real de competencia.</p><div class="video-meta"><span>VIDEO CORTO</span><span>COMPETENCIA</span></div></div>
+    <div class="video-frame">
+      <video controls preload="metadata" playsinline poster="img/paranatacion.png">
+        <source src="video/paranatacion-competencia.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+      </video>
+
+    </div>
+  </div>
+  <div class="pill-row"><span>RESISTENCIA</span><span>COORDINACIÓN</span><span>PRECISIÓN</span><span>ESTRATEGIA</span><span>EXPRESIÓN</span></div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="competition" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 04</span><h2>LA NATACIÓN EN COMPETENCIA</h2><p>Detrás de una carrera hay reglas, distancias, salidas, virajes, cronometraje y estrategia.</p></div>
+  <div class="competition-hero"><img src="img/portada.png" alt="Competencia de natación"><div class="image-overlay"></div><div class="competition-copy"><span class="kicker">VELOCIDAD · RESISTENCIA · ESTRATEGIA</span><h3>NO SE TRATA SOLO DE NADAR RÁPIDO.</h3><p>En una competencia, cada detalle puede formar parte del resultado: la salida, la posición corporal, la frecuencia de brazada, la respiración, el viraje y la llegada.</p></div></div>
+  <div class="stat-grid">
+    <article><strong>25 m</strong><span>PISCINA CORTA</span><p>Distancia habitual de piscina de 25 metros en competiciones de piscina corta.</p></article>
+    <article><strong>50 m</strong><span>PISCINA LARGA</span><p>Longitud estándar de piscina olímpica para muchas competiciones internacionales.</p></article>
+    <article><strong>VIRAJE</strong><span>CAMBIO DE DIRECCIÓN</span><p>Permite cambiar de sentido aprovechando la pared de la piscina.</p></article>
+    <article><strong>LLEGADA</strong><span>ÚLTIMO DETALLE</span><p>El contacto con la pared debe realizarse de acuerdo con las reglas de cada prueba y estilo.</p></article>
+  </div>
+  <div class="rule-box"><span class="kicker">REGLA BÁSICA</span><h3>CADA ESTILO TIENE SUS PROPIAS EXIGENCIAS.</h3><p>Las reglas determinan cómo debe ejecutarse la salida, el nado, los virajes y la llegada. Por eso, dominar la técnica también significa conocer las reglas de la prueba.</p></div>
+  <div class="competition-gallery"><figure><img src="img/salida.png" alt="Salida de una carrera de natación" loading="lazy"><figcaption>SALIDA</figcaption></figure><figure><img src="img/viraje.png" alt="Viraje en natación" loading="lazy"><figcaption>VIRAJE</figcaption></figure><figure><img src="img/llegada.png" alt="Llegada de una carrera de natación" loading="lazy"><figcaption>LLEGADA</figcaption></figure></div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="technique" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 05</span><h2>EL CUERPO EN EL AGUA</h2><p>La técnica busca aprovechar la propulsión y reducir movimientos innecesarios para desplazarse con eficiencia.</p></div>
+  <div class="tech-hero"><div class="tech-photo"><img src="img/libre.png" alt="Nadador realizando estilo libre"></div><div class="tech-copy"><span class="kicker">CLAVES TÉCNICAS</span><h3>POSICIÓN + PROPULSIÓN + RESPIRACIÓN</h3><p>Una buena técnica no depende únicamente de la fuerza. La posición del cuerpo, la coordinación y la forma de aprovechar el agua influyen en el desplazamiento.</p><div class="tech-list"><button data-tip="Mantener el cuerpo alineado ayuda a reducir la resistencia del agua."><b>01</b> POSICIÓN CORPORAL <span>+</span></button><button data-tip="La brazada y la patada generan fuerzas que impulsan el cuerpo hacia adelante."><b>02</b> PROPULSIÓN <span>+</span></button><button data-tip="La respiración debe integrarse al ritmo del estilo sin romper demasiado la posición."><b>03</b> RESPIRACIÓN <span>+</span></button><button data-tip="Coordinar brazos, piernas y respiración permite un movimiento más fluido."><b>04</b> COORDINACIÓN <span>+</span></button></div><p id="tipText" class="tip-text">Pulsa una clave técnica para descubrir más.</p></div></div>
+  <div class="section-photo-row technique-photo-row">
+    <figure><img src="img/tecnica-posicion.png" alt="Posición corporal en natación" loading="lazy"><figcaption>POSICIÓN CORPORAL</figcaption></figure>
+    <figure><img src="img/tecnica-respiracion.png" alt="Respiración durante el nado" loading="lazy"><figcaption>RESPIRACIÓN</figcaption></figure>
+    <figure><img src="img/tecnica-propulsion.png" alt="Propulsión durante el nado" loading="lazy"><figcaption>PROPULSIÓN</figcaption></figure>
+  </div>
+  <div class="training-grid"><article><span>01</span><h3>CALENTAMIENTO</h3><p>Prepara progresivamente el cuerpo para la actividad física.</p></article><article><span>02</span><h3>TÉCNICA</h3><p>Practicar movimientos específicos ayuda a mejorar la coordinación.</p></article><article><span>03</span><h3>RESISTENCIA</h3><p>Permite mantener el esfuerzo durante períodos prolongados.</p></article><article><span>04</span><h3>RECUPERACIÓN</h3><p>Descansar también forma parte de un entrenamiento responsable.</p></article></div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="equipment" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 06</span><h2>EQUIPAMIENTO</h2><p>Los materiales pueden ayudar al entrenamiento, la comodidad y la seguridad según la actividad.</p></div>
+  <div class="equipment-grid" id="equipmentGrid"></div>
+  <div class="safety"><b>IMPORTANTE</b><p>El equipo no sustituye la supervisión ni las normas de seguridad. Su uso depende de la actividad, el nivel del nadador y las indicaciones correspondientes.</p></div>
+  <div class="equipment-photo-strip">
+    <figure><img src="img/equipamiento.png" alt="Equipamiento de natación" loading="lazy"><figcaption>EQUIPAMIENTO DEPORTIVO</figcaption></figure>
+    <figure><img src="img/seguridad.png" alt="Seguridad en la piscina" loading="lazy"><figcaption>PRÁCTICA RESPONSABLE</figcaption></figure>
+  </div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="safety" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 07</span><h2>SEGURIDAD EN EL AGUA</h2><p>Aprender a nadar también implica reconocer riesgos y actuar de manera responsable.</p></div>
+  <div class="safety-grid">
+    <article><span>01</span><h3>CONOCE EL ENTORNO</h3><p>Antes de entrar, identifica la profundidad, las zonas permitidas, las condiciones del agua y las indicaciones del lugar.</p></article>
+    <article><span>02</span><h3>NO NADES SOLO</h3><p>Especialmente en lugares naturales o cuando existe riesgo, debe haber supervisión y apoyo adecuado.</p></article>
+    <article><span>03</span><h3>RESPETA TUS LÍMITES</h3><p>La fatiga, el frío, las corrientes y otros factores pueden cambiar rápidamente una situación.</p></article>
+    <article><span>04</span><h3>ACTÚA CON RESPONSABILIDAD</h3><p>Ante una emergencia, pide ayuda y sigue los protocolos del lugar en vez de improvisar un rescate.</p></article>
+  </div>
+  <div class="section-photo-row safety-photo-row">
+    <figure><img src="img/seguridad.png" alt="Seguridad en la piscina" loading="lazy"><figcaption>PREVENCIÓN</figcaption></figure>
+    <figure><img src="img/aguas-abiertas.png" alt="Entorno acuático" loading="lazy"><figcaption>CONOCE EL ENTORNO</figcaption></figure>
+    <figure><img src="img/tecnica-respiracion.png" alt="Nado responsable" loading="lazy"><figcaption>RESPONSABILIDAD</figcaption></figure>
+  </div>
+  <div class="emergency-note"><strong>EL MEJOR NADADOR TAMBIÉN SABE CUÁNDO NO ENTRAR AL AGUA.</strong><span>PREVENCIÓN · SUPERVISIÓN · RESPONSABILIDAD</span></div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+
+<section id="quiz" class="page">
+  <div class="section-head"><span class="kicker">ESTACIÓN / 08 · DESAFÍO FINAL</span><h2>¿CUÁNTO APRENDISTE?</h2><p>Diez preguntas para cerrar tu recorrido por el museo.</p></div>
+  <div id="quizBox" class="quiz-box"></div>
+  <div class="quiz-visual"><img src="img/quiz.png" alt="Nadador completando el recorrido" loading="lazy"><div><span class="kicker">CIERRE DEL RECORRIDO</span><h3>LO QUE APRENDISTE, AHORA PUEDES EXPLICARLO.</h3><p>Usa el desafío final para comprobar cuánto recuerdas sobre historia, estilos, disciplinas, competencia, técnica y seguridad.</p></div></div>
+  <button class="back-btn" data-section="map">← VOLVER AL RECORRIDO</button>
+</section>
+</main>
+
+<section id="final" class="final hidden"><div class="final-water"></div><div class="final-content"><span class="kicker">RECORRIDO COMPLETADO</span><h2>EL AGUA<br>SE CONVIERTE<br>EN HISTORIA.</h2><p>SE EXPLORA · SE ENTRENA · SE COMPITE · SE DISFRUTA</p><small>Gracias por recorrer el Museo Virtual de la Natación.</small><div id="finalScore"></div><button id="restartFromFinal" class="hero-btn hero-start final-return"><span class="btn-small">NUEVA VISITA</span><strong>VOLVER AL INICIO</strong><b>↻</b></button></div></section>
+<script src="js/script.js"></script>
+</body>
+</html>
